@@ -1,11 +1,12 @@
-import logo from './logo.svg';
 import './App.css';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Route} from 'react-router-dom';
 import Home from './pages/home/home';
 import Login from './pages/login/login';
 import Register from './pages/register/register';
 import Forgot from './pages/forgot/forgot';
 import NewPassword from './pages/newPassword/new-password';
+import ShowPatients from './pages/patient/show-patients';
+import CreatePatient from './pages/patient/create-patient';
 
 
 function App() {
@@ -28,6 +29,12 @@ function App() {
       </Route>
       <Route exact path="/renew-password">
         <NewPassword />
+      </Route>
+      <Route exact path="/patient/new">
+        <CreatePatient />
+      </Route>
+      <Route exact path="/patients">
+        <ShowPatients />
       </Route>
     </div>
   );

@@ -1,18 +1,17 @@
-import React, { useState,useContext } from "react";
+import React, { useState} from "react";
 import "./forgot.scss";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Avatar from '@material-ui/core/Avatar';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import Snackbar from '@material-ui/core/Snackbar';
-import MuiAlert from '@material-ui/lab/Alert';
+// import MuiAlert from '@material-ui/lab/Alert';
 // import * as LoginService from "../../services/AuthService";
 // import UserContext from "../../context/UserContext";
 import {Link} from "react-router-dom";
 
-function Alert(props) {
-  return <MuiAlert elevation={6} variant="filled" {...props} />;
-}
+// function Alert(props) {
+//   return <MuiAlert elevation={6} variant="filled" {...props} />;
+// }
 
 const Forgot = () => {
 
@@ -25,12 +24,12 @@ const Forgot = () => {
   }
   
   const handleForgot = () => {
-    console.log(email);
+    /* console.log(email);
     const body = {
       "email": email,
     };
 
-    /*LoginService.login(body).then(
+    LoginService.login(body).then(
       (response) => {
         console.log(response);
         if(response){

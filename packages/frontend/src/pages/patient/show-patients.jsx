@@ -1,10 +1,10 @@
 import React, { useState,useContext } from "react";
-import "./home.scss";
+import "./show-patients.scss";
 import { DataGrid } from '@material-ui/data-grid';
 import Button from "@material-ui/core/Button";
 
 
-const Home = () => {
+const ShowPatients = () => {
   const columns = [
     { field: 'id', headerName: 'ID', width: 90 },
     { field: 'firstName', headerName: 'Nombre', width: 150 },
@@ -39,10 +39,28 @@ const Home = () => {
   ];
 
   return (
-    <div className="home-main-container">
-      <span>Hola</span>
+    <div className="patients-list-main-container">
+      <span className="title">Mis pacientes</span>
+      <div className="table-container">
+        <DataGrid rows={rows} columns={columns} pageSize={7} checkboxSelection />
+      </div>
+      <div className="btn-grp">
+        <Button
+          variant="contained" 
+          className="btn primary"
+        >
+          Crear paciente
+        </Button>
+         <Button
+          variant="contained" 
+          className="btn secondary"
+        >
+          Crear Cita
+        </Button>
+      </div>
+
     </div>
   );
 };
 
-export default Home;
+export default ShowPatients;

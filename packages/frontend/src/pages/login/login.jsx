@@ -106,6 +106,9 @@ const Login = () => {
           Iniciar sesión
         </Button>
         <div className="messages">
+        <Link className="link right" to="forgot">
+            <span>¿Olvidaste tu contraseña?</span>
+          </Link>
           <Link className="link right" to="register">
             <span>No tienes cuenta? Registrate</span>
           </Link>
