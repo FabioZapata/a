@@ -1,15 +1,15 @@
-.patient-container {
+.appointment-container {
   display: flex;
   align-items: center;
   flex-direction: column;
-  height: 70vh;
+  height: 60vh;
   width: 40vw;
   background-color: white;
   border-radius: 25px;
   padding: 1rem;
 
   .title {
-    margin-top: 4rem;
+    margin-top: 3rem;
     font-size: 3rem;
     margin-bottom: 2rem;
     font-weight: 500;
@@ -25,6 +25,13 @@
     &:last-child {
       margin-bottom: 30px;
     }
+  }
+
+  .picker {
+    display: flex;
+    justify-content: flex-start;
+    margin: 1rem;
+    margin-left: 3.5rem;
   }
 
   .btn-grp {
@@ -46,5 +53,18 @@
     .secondary {
       background-color: #ff1744;
     }
+  }
+
+  .input-d {
+    display: none;
+  }
+
+  .upd {
+    background-color: rgb(81, 215, 206);
+    color: white;
+  }
+
+  .date-picker {
+    margin: 1rem;
   }
 }

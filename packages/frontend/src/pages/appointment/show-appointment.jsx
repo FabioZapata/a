@@ -1,15 +1,14 @@
 import React, { useState,useContext } from "react";
-import "./show-patients.scss";
+import "./show-appointment.scss";
 import { DataGrid } from '@material-ui/data-grid';
 import Button from "@material-ui/core/Button";
 import { Link } from 'react-router-dom';
 
 
-const ShowPatients = () => {
+const ShowAppointments = () => {
   const columns = [
     { field: 'id', headerName: 'ID', width: 90 },
-    { field: 'firstName', headerName: 'Nombre', width: 150 },
-    { field: 'lastName', headerName: 'Apellido', width: 150 },
+    { field: 'name', headerName: 'Nombre Completo', width: 150 },
     {
       field: 'age',
       headerName: 'Edad',
@@ -17,8 +16,8 @@ const ShowPatients = () => {
       width: 90,
     },
     {
-      field: 'fullName',
-      headerName: 'Nombre completo',
+      field: 'date',
+      headerName: 'fecha',
       description: 'This column has a value getter and is not sortable.',
       sortable: false,
       width: 180,
@@ -41,7 +40,7 @@ const ShowPatients = () => {
 
   return (
     <div className="patients-list-main-container">
-      <span className="title">Mis pacientes</span>
+      <span className="title">Mis Citas</span>
       <div className="table-container">
         <DataGrid rows={rows} columns={columns} pageSize={7} checkboxSelection />
       </div>
@@ -50,6 +49,7 @@ const ShowPatients = () => {
           variant="contained" 
           className="btn primary"
           component={Link} to={'/patient/new'}        
+
         >
           Crear paciente
         </Button>
@@ -67,4 +67,4 @@ const ShowPatients = () => {
   );
 };
 
-export default ShowPatients;
+export default ShowAppointments;

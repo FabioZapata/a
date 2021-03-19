@@ -7,7 +7,8 @@ import Forgot from './pages/forgot/forgot';
 import NewPassword from './pages/newPassword/new-password';
 import ShowPatients from './pages/patient/show-patients';
 import CreatePatient from './pages/patient/create-patient';
-
+import ShowAppointments from './pages/appointment/show-appointment';
+import CreateAppointment from './pages/appointment/create-appointment';
 
 function App() {
   return (
@@ -36,6 +37,13 @@ function App() {
       <Route exact path="/patients">
         <ShowPatients />
       </Route>
+      <Route exact path="/appointments">
+        <ShowAppointments />
+      </Route>
+      <Route exact path="/appointment/new">
+        <CreateAppointment />
+      </Route>
+      
     </div>
   );
 }
