@@ -10,13 +10,13 @@
 
   .title {
     margin-top: 4rem;
-    font-size: 3rem;
+    font-size: 2.5rem;
     margin-bottom: 2rem;
     font-weight: 500;
   }
 
   .text-field {
-    width: 80%;
+    width: 100%;
     margin: 15px;
 
     &:first-child {
@@ -25,6 +25,11 @@
     &:last-child {
       margin-bottom: 30px;
     }
+  }
+
+  .text-area {
+    width: 95%;
+    margin-bottom: 1rem;
   }
 
   .btn-grp {
@@ -45,6 +50,21 @@
 
     .secondary {
       background-color: #ff1744;
+    }
+  }
+
+  .imc {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    .text-field {
+      margin-top: 30px;
+    }
+    .double {
+      margin-top: 15px;
+      margin-left: 0px;
+      margin-right: 0px;
+      width: 48%;
     }
   }
 }

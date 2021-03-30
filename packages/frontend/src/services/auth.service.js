@@ -10,14 +10,14 @@ axios.defaults.headers.common = {
 
 // Send information with body{ email, password }
 
-export const  login = async (body) => {
+export const login = async (body) => {
   return axios.post(BASE_URL, body).then(
     (res) => {
       return res.data;
     }
   ).catch(
     (error) => {
-      console.log("login error",error);
+      console.log("login error", error);
     }
   );
 };
@@ -27,7 +27,7 @@ export const  login = async (body) => {
 // is still valid 
 
 export const autoLogin = () => {
-  return  localStorage.getItem("token");
+  return localStorage.getItem("token");
 };
 
 
@@ -36,3 +36,4 @@ export const autoLogin = () => {
 export const logout = () => {
   localStorage.removeItem("token");
   localStorage.removeItem("user");
+}
