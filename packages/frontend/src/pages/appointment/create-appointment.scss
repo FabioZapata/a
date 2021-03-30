@@ -2,7 +2,6 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  height: 60vh;
   width: 40vw;
   background-color: white;
   border-radius: 25px;
@@ -32,6 +31,11 @@
     justify-content: flex-start;
     margin: 1rem;
     margin-left: 3.5rem;
+  }
+
+  .text-area {
+    width: 80%;
+    margin-bottom: 1rem;
   }
 
   .btn-grp {

@@ -12,11 +12,17 @@ import {
 } from '@material-ui/pickers';
 
 
+
+// patientId: 1
+// heartPressure: 8/10
+// description: Segunda prueba
+// file: IMAGE
+
 const CreateAppointment = () => {
   const [name, setName] = useState('');
-  const [lastName, setLastName] = useState('');
+  const [description, setDescription] = useState('');
   const [age, setAge] = useState('');
-  const [dni, setDni] = useState('');
+  const [heartPressure, setHeartPresure] = useState('');
   const [selectedDate, setSelectedDate] = React.useState(new Date('2014-08-18T21:11:54'));
 
   const handleDateChange = (date) => {
@@ -25,7 +31,6 @@ const CreateAppointment = () => {
 
   const handleSave = () => {
     console.log(name);
-    console.log(lastName);
     console.log(age);
   }
   
@@ -35,13 +40,23 @@ const CreateAppointment = () => {
       <div className="fields">
         <TextField
           id="outlined-Dni"
-          label="Dni"
-          type="number"
+          label="Presion arterial"
+          type="text"
           className="text-field"
           autoComplete="current-name"
           variant="outlined"
-          value={dni}
-          onChange={(e) => setDni(e.currentTarget.value)} 
+          value={heartPressure}
+          onChange={(e) => setHeartPresure(e.currentTarget.value)} 
+        />
+         <TextField
+          id="outlined-textarea"
+          label="Descripcion"
+          placeholder="Placeholder"
+          multiline
+          value={description}
+          className="text-area"
+          onChange={(e) => setDescription(e.target.value)}
+          variant="outlined"
         />
         <div class="picker">
           <input
@@ -58,7 +73,7 @@ const CreateAppointment = () => {
           </label>
 
         </div>
-        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+        {/* <MuiPickersUtilsProvider utils={DateFnsUtils}>
           <KeyboardDatePicker
             margin="normal"
             id="date-picker-dialog"
@@ -83,7 +98,7 @@ const CreateAppointment = () => {
             }}
           />
         </MuiPickersUtilsProvider>
-
+ */}
 
 
         </div>
