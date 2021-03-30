@@ -1,7 +1,7 @@
 import axios from "axios"
 import { config } from '../config/Constants';
 
-const BASE_URL = config.url.API_URL + "/login";
+const BASE_URL = config.url.API_URL + "/api/login";
 
 axios.defaults.headers.common = {
   "Content-Type": "application/json",
