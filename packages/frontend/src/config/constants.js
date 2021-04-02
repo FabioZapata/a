@@ -10,4 +10,7 @@ const dev = {
   }
 };
 
+export const PRIVATE_REDIRECT = '/login';
+export const SESSION_USER_LOCAL_KEY = 'token';
+
 export const config = process.env.NODE_ENV === "development" ? dev : prod;
