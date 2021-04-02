@@ -14,7 +14,7 @@ function App() {
   return (
     <div className="App">
        <Route exact path="/">
-        <Home />
+        <ShowPatients />
       </Route>
       <Route exact path="/home">
         <Home />

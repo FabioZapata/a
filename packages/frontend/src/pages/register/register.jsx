@@ -1,11 +1,11 @@
-import React, { useState,  useContext } from "react";
+import React, { useState, useContext } from "react";
 import "./register.scss";
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Avatar from '@material-ui/core/Avatar';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
 import Select from '@material-ui/core/Select';
@@ -23,12 +23,12 @@ const useStyles = makeStyles((theme) => ({
   },
   select: {
     '&:before': {
-        borderColor: 'white',
+      borderColor: 'white',
     },
     '&:after': {
-        borderColor: 'white',
+      borderColor: 'white',
     }
-},
+  },
 }));
 
 // import UserContext from "../../context/UserContext";
@@ -57,7 +57,7 @@ const Register = (props) => {
   const [carnet, setCarnet] = useState('');
   const [gender, setGender] = useState('');
   // const setAuthState = useContext(UserContext).setAuthState;
- 
+
 
 
   const [open, setOpen] = useState(false);
@@ -76,7 +76,7 @@ const Register = (props) => {
     e.persist();
     setEmail(e.currentTarget.value);
   }
-  
+
   const handlePasswordChange = (e) => {
     e.persist();
     setPassword(e.currentTarget.value);
@@ -92,40 +92,40 @@ const Register = (props) => {
   }
 
   const handleRegister = () => {
-    if(password === passwordConf && validateEmail){
-      console.log(gender);  
+    if (password === passwordConf && validateEmail) {
+      console.log(gender);
       const body = {
-          firstName,
-          lastName,
-          email,
-          password,
-          carnet,
-          gender,
-        };
-        setOpen(true);
+        firstName,
+        lastName,
+        email,
+        password,
+        carnet,
+        gender,
+      };
+      setOpen(true);
 
-        /*RegisterService.create(body).then(
-          (response) => {
-            if(response.message == 'Created'){
-              setFirstName('');
-              setLastName('');
-              setEmail('');
-              setPassword('');
-              setCarnet('');
-              setGender('');
-              setOpen(true);
-              setAuthState({ user: email, reported: true });
-              setTimeout( ()=>{
-                window.location.href = '/';
+      /*RegisterService.create(body).then(
+        (response) => {
+          if(response.message == 'Created'){
+            setFirstName('');
+            setLastName('');
+            setEmail('');
+            setPassword('');
+            setCarnet('');
+            setGender('');
+            setOpen(true);
+            setAuthState({ user: email, reported: true });
+            setTimeout( ()=>{
+              window.location.href = '/';
 
-                //props.history.push("/");
-              }, 1500);
-            }
+              //props.history.push("/");
+            }, 1500);
           }
-        );
-        */
+        }
+      );
+      */
     }
-    
+
   }
   return (
     <div className="register-main-container">
@@ -191,7 +191,7 @@ const Register = (props) => {
           variant="outlined"
           value={email}
           error={`${!(/^[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$/.test(email))}`}
-          helperText={`${!(/^[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$/.test(email))? "Email incorrecto": ""}`}
+          helperText={`${!(/^[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$/.test(email)) ? "Email incorrecto" : ""}`}
           onChange={handleEmailChange}
         />
         <TextField
@@ -213,11 +213,11 @@ const Register = (props) => {
           variant="outlined"
           value={passwordConf}
           error={password !== '' && password !== passwordConf}
-          helperText={(password !== '' && password !== passwordConf) ? "Las contraseñas no coinciden" : "" }
+          helperText={(password !== '' && password !== passwordConf) ? "Las contraseñas no coinciden" : ""}
           onChange={handlePasswordConfChange}
         />
         <Button
-          variant="contained" 
+          variant="contained"
           className="btn-login"
           onClick={handleRegister}
         >
