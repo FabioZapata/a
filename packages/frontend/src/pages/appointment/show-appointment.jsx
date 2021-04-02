@@ -1,11 +1,26 @@
-import React, { useState,useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import "./show-appointment.scss";
 import { DataGrid } from '@material-ui/data-grid';
 import Button from "@material-ui/core/Button";
 import { Link } from 'react-router-dom';
+import Navbar from '../../components/navbar/Navbar';
+import * as appointmentService from '../../services/user.service';
 
 
 const ShowAppointments = () => {
+
+  const [appointments, setAppointments] = useState([]);
+
+  useEffect(() => {
+    appointmentService.getAppointments().then(
+      (response) => {
+        setAppointments(response);
+        console.log(response);
+      }
+    );
+  }, []);
+
+
   const columns = [
     { field: 'id', headerName: 'ID', width: 90 },
     { field: 'name', headerName: 'Nombre Completo', width: 150 },
@@ -25,7 +40,7 @@ const ShowAppointments = () => {
         `${params.getValue('firstName') || ''} ${params.getValue('lastName') || ''}`,
     },
   ];
-  
+
   const rows = [
     { id: 1, lastName: 'Snow', firstName: 'Jon', age: 35 },
     { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
@@ -39,24 +54,25 @@ const ShowAppointments = () => {
   ];
 
   return (
-    <div className="patients-list-main-container">
+    <div className="list-main-container">
+      <Navbar />
       <span className="title">Mis Citas</span>
       <div className="table-container">
         <DataGrid rows={rows} columns={columns} pageSize={7} checkboxSelection />
       </div>
       <div className="btn-grp">
         <Button
-          variant="contained" 
+          variant="contained"
           className="btn primary"
-          component={Link} to={'/patient/new'}        
+          component={Link} to={'/patient/new'}
 
         >
           Crear paciente
         </Button>
-         <Button
-          variant="contained" 
+        <Button
+          variant="contained"
           className="btn secondary"
-          component={Link} to={'/appointment/new'}        
+          component={Link} to={'/appointment/new'}
 
         >
           Crear Cita

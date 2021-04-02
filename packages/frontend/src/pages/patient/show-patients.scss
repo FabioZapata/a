@@ -1,18 +1,16 @@
-.patients-list-main-container {
+.list-main-container {
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: 80vh;
-  width: 50vw;
-  background-color: white;
-  border-radius: 25px;
-  padding: 1rem;
+  height: 100vh;
+  width: 100vw;
 
   .title {
-    font-size: 3rem;
+    margin-top: 2rem;
+    font-size: 2rem;
     margin-bottom: 2rem;
     font-weight: 500;
+    color: white;
   }
 
   .table-container {
@@ -20,7 +18,7 @@
     justify-content: center;
     width: 50vw;
     height: 60vh;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.7);
     border-radius: 14px;
   }
 
@@ -35,11 +33,11 @@
     }
 
     .primary {
-      background-color: rgb(28, 175, 28);
+      background-color: #51d7ce;
     }
 
     .secondary {
-      background-color: #834bff;
+      background-color: #2196f3;
     }
   }
 

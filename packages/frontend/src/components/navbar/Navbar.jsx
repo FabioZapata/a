@@ -4,13 +4,14 @@ import Logo from '../../assets/caduceus-symbol.svg';
 import Logout from '../../assets/logout.svg';
 import LogoutOnHover from '../../assets/logoutOnHover.svg';
 import './Navbar.scss'
+import * as authService from '../../services/auth.service';
 
 const Navbar = () => {
 
   const [logout, setLogout] = useState(Logout);
 
   const handlelogout = () => {
-    console.log("TODO LOGOUT");
+    authService.logout();
   }
 
   return (
