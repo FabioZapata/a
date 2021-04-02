@@ -3,16 +3,16 @@ import './create-appointment.scss';
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { Link } from 'react-router-dom';
-import DateFnsUtils from '@date-io/date-fns';
-import * as appointmentService from '../../services/user.service';
-
-import {
-  MuiPickersUtilsProvider,
-  KeyboardTimePicker,
-  KeyboardDatePicker,
-} from '@material-ui/pickers';
 
 import Navbar from '../../components/navbar/Navbar';
+
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
+
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
+
 
 
 // patientId: 1
@@ -28,6 +28,18 @@ const CreateAppointment = (props) => {
   const [selectedDate, setSelectedDate] = useState(new Date('2014-08-18T21:11:54'));
   const [fileName, setFileName] = useState('No has seleccionado ningún archivo');
   const [imgFile, setImgFile] = useState('');
+  const [open, setOpen] = useState(false);
+  const [message, setMessage] = useState('');
+  const [status, setStatus] = useState('success');
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+  };
+
 
   useEffect(() => {
     setName(props?.patient?.name || null);
@@ -47,14 +59,16 @@ const CreateAppointment = (props) => {
   }
 
   const handleSave = () => {
-    const patientId = props.patient.id;
-    const body = {
-      patientId,
-      heartPressure,
-      description,
-      imgFile,
-    };
-
+    // const patientId = props.patient.id;
+    // const body = {
+    //   patientId,
+    //   heartPressure,
+    //   description,
+    //   imgFile,
+    // };
+    setStatus('success');
+    setOpen(true);
+    setMessage("Creación de la cita exitosa");
     // appointmentService.createAppointment(body).then(
     //   (response) => {
     //     // SUccess;
@@ -131,7 +145,11 @@ const CreateAppointment = (props) => {
           </Button>
         </div>
       </div>
-
+      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity={status}>
+          {message}
+        </Alert>
+      </Snackbar>
     </div>
   );
 };

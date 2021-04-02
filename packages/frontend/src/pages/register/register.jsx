@@ -12,6 +12,8 @@ import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
+import * as RegisterService from '../../services/register.service';
+
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -104,9 +106,10 @@ const Register = (props) => {
       };
       setOpen(true);
 
-      /*RegisterService.create(body).then(
+      RegisterService.create(body).then(
         (response) => {
-          if(response.message == 'Created'){
+          console.log(response);
+          if (response.message == 'Created') {
             setFirstName('');
             setLastName('');
             setEmail('');
@@ -114,16 +117,15 @@ const Register = (props) => {
             setCarnet('');
             setGender('');
             setOpen(true);
-            setAuthState({ user: email, reported: true });
-            setTimeout( ()=>{
-              window.location.href = '/';
+            // setAuthState({ user: email, reported: true });
+            // setTimeout(() => {
+            //   window.location.href = '/';
 
-              //props.history.push("/");
-            }, 1500);
+            //   //props.history.push("/");
+            // }, 1500);
           }
         }
-      );
-      */
+      ).catch(error => console.log(error));
     }
 
   }
@@ -140,7 +142,7 @@ const Register = (props) => {
           <TextField
             id="outlined-height-input"
             label="Nombre *"
-            type="number"
+            type="text"
             className="text-field double"
             variant="outlined"
             value={firstName}
@@ -149,7 +151,7 @@ const Register = (props) => {
           <TextField
             id="outlined-weight-input"
             label="Apellido *"
-            type="number"
+            type="text"
             className="text-field double"
             variant="outlined"
             value={lastName}
@@ -168,14 +170,14 @@ const Register = (props) => {
             onChange={(e) => setCarnet(e.target.value)}
           />
           <FormControl variant="outlined" className={classes.formControl}>
-            <InputLabel id="demo-simple-select-outlined-label">Age</InputLabel>
+            <InputLabel id="demo-simple-select-outlined-label">Genero</InputLabel>
             <Select
               labelId="demo-simple-select-outlined-label"
               id="demo-simple-select-outlined"
               value={gender}
               className={classes.select}
               onChange={(e) => setGender(e.target.value)}
-              label="Age"
+              label="Genero"
             >
               <MenuItem value={"Male"}>Hombre</MenuItem>
               <MenuItem value={"Female"}>Mujer</MenuItem>

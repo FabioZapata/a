@@ -1,4 +1,4 @@
-import React, { useState,useContext } from "react";
+import React, { useState, useContext } from "react";
 import "./login.scss";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
@@ -6,9 +6,9 @@ import Avatar from '@material-ui/core/Avatar';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
-// import * as LoginService from "../../services/AuthService";
+import * as LoginService from "../../services/auth.service";
 // import UserContext from "../../context/UserContext";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -35,7 +35,7 @@ const Login = () => {
     e.persist();
     setEmail(e.currentTarget.value);
   }
-  
+
   const handlePasswordChange = (e) => {
     e.persist();
     setPassword(e.currentTarget.value);
@@ -50,22 +50,22 @@ const Login = () => {
       "password": password,
     };
 
-    /*LoginService.login(body).then(
+    LoginService.login(body).then(
       (response) => {
         console.log(response);
-        if(response){
+        if (response) {
           localStorage.setItem("token", response.access_token);
           localStorage.setItem("user", body.email);
-          setAuthState({user: email, reported: true});
-          console.log(setAuthState.authState);
-          window.location.href = '/';
+          // setAuthState({user: email, reported: true});
+          // console.log(setAuthState.authState);
+          // window.location.href = '/';
         }
-        else{
+        else {
           setOpen(true);
           console.log("Login failed");
         }
       }
-    )*/
+    )
 
   }
 
@@ -99,14 +99,14 @@ const Login = () => {
           onChange={handlePasswordChange}
         />
         <Button
-          variant="contained" 
+          variant="contained"
           className="btn-login"
           onClick={handleLogin}
         >
           Iniciar sesión
         </Button>
         <div className="messages">
-        <Link className="link right" to="forgot">
+          <Link className="link right" to="forgot">
             <span>¿Olvidaste tu contraseña?</span>
           </Link>
           <Link className="link right" to="register">

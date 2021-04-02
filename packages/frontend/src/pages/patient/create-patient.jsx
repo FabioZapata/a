@@ -12,6 +12,15 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 import Navbar from '../../components/navbar/Navbar';
 
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
+
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
+
+
+
 const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(1),
@@ -30,12 +39,30 @@ const CreatePatient = () => {
   const [lastName, setLastName] = useState('');
   const [gender, setGender] = useState('');
   const [description, setDescription] = useState('');
+  const [open, setOpen] = useState(false);
+  const [message, setMessage] = useState('');
+  const [status, setStatus] = useState('success');
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+  };
+
 
   const handleSave = () => {
     console.log(firstName);
     console.log(lastName);
     console.log(gender);
     console.log(description);
+
+
+    setStatus('success');
+    setOpen(true);
+    setMessage("Creación de la cita exitosa");
+
   }
 
   return (
@@ -111,8 +138,12 @@ const CreatePatient = () => {
             Crear Paciente
           </Button>
         </div>
-
       </div>
+      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity={status}>
+          {message}
+        </Alert>
+      </Snackbar>
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import axios from "axios"
-import { config } from '../config/Constants';
+import { config } from '../config/constants';
 
 const BASE_URL = config.url.API_URL + "/api/create";
 
