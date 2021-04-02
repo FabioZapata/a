@@ -2,16 +2,18 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  width: 40vw;
-  background-color: white;
-  border-radius: 25px;
-  padding: 1rem;
+  height: 100vh;
+  width: 100vw;
 
   .title {
-    margin-top: 3rem;
-    font-size: 3rem;
-    margin-bottom: 2rem;
+    margin-top: 1.5rem;
+    font-size: 2rem;
     font-weight: 500;
+  }
+
+  .sub-title {
+    margin-top: 1rem;
+    font-size: 1rem;
   }
 
   .text-field {
@@ -51,7 +53,7 @@
     }
 
     .primary {
-      background-color: #1de9b6;
+      background-color: #51d7ce;
     }
 
     .secondary {
@@ -64,11 +66,30 @@
   }
 
   .upd {
-    background-color: rgb(81, 215, 206);
+    background-color: #51d7ce;
     color: white;
   }
 
   .date-picker {
     margin: 1rem;
+  }
+}
+
+.modal-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 3rem;
+  padding: 1rem 2rem 1rem 2rem;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 2rem;
+}
+
+.picker-group {
+  display: flex;
+  flex-direction: row;
+
+  .file-name {
+    margin-left: 1rem;
+    font-size: 0.8rem;
   }
 }
