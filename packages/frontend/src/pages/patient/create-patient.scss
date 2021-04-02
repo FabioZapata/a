@@ -2,23 +2,18 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  height: 70vh;
-  width: 40vw;
-  background-color: white;
-  border-radius: 25px;
-  padding: 1rem;
+  height: 100vh;
+  width: 100vw;
 
   .title {
-    margin-top: 4rem;
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
+    font-size: 2rem;
+    margin-top: 1.5rem;
     font-weight: 500;
   }
 
   .text-field {
     width: 100%;
     margin: 15px;
-
     &:first-child {
       margin-top: 30px;
     }
@@ -29,14 +24,14 @@
 
   .text-area {
     width: 95%;
+    margin: 15px;
     margin-bottom: 1rem;
   }
 
   .btn-grp {
     margin-top: auto;
-    margin-bottom: 3rem;
+    padding-top: 2rem;
     display: flex;
-    width: 30vw;
     justify-content: flex-end;
 
     .btn {
@@ -45,7 +40,7 @@
     }
 
     .primary {
-      background-color: #1de9b6;
+      background-color: #51d7ce;
     }
 
     .secondary {
@@ -53,18 +48,21 @@
     }
   }
 
-  .imc {
+  .double-fields {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    width: 100%;
     .text-field {
       margin-top: 30px;
-    }
-    .double {
-      margin-top: 15px;
-      margin-left: 0px;
-      margin-right: 0px;
       width: 48%;
     }
+  }
+
+  .age-field {
+    width: 30%;
+    display: flex;
+    align-self: flex-start;
+    margin: 15px;
   }
 }

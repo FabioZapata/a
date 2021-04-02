@@ -1,4 +1,4 @@
-import React, {useState } from 'react';
+import React, { useState } from 'react';
 import './create-patient.scss';
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
@@ -10,6 +10,7 @@ import FormControl from '@material-ui/core/FormControl';
 import { makeStyles } from '@material-ui/core/styles';
 
 import { Link } from 'react-router-dom';
+import Navbar from '../../components/navbar/Navbar';
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -19,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
   selectEmpty: {
     marginTop: theme.spacing(2),
   },
-  
+
 }));
 
 const CreatePatient = () => {
@@ -36,76 +37,82 @@ const CreatePatient = () => {
     console.log(gender);
     console.log(description);
   }
-  
+
   return (
     <div className="patient-container">
-      <span className="title">Crear nuevo paciente</span>
-      <div className="fields">
-        <div className="imc">
+      <Navbar />
+      <div className="modal-container">
+        <span className="title">Crear nuevo paciente</span>
+        <div className="fields">
+          <div className="double-fields">
+            <TextField
+              id="outlined-first-name"
+              label="Nombre"
+              type="text"
+              className="text-field"
+              autoComplete="current-name"
+              variant="outlined"
+              value={firstName}
+              onChange={(e) => setFirstName(e.currentTarget.value)}
+            />
+            <TextField
+              id="outlined-last-name"
+              label="Apellido"
+              type="text"
+              className="text-field"
+              autoComplete="apellido"
+              variant="outlined"
+              value={lastName}
+              onChange={(e) => setLastName(e.currentTarget.value)}
+            />
+          </div>
           <TextField
-            id="outlined-first-name"
-            label="Nombre"
-            type="text"
-            className="text-field"
-            autoComplete="current-name"
+            id="outlined-textarea"
+            label="Descripcion"
+            placeholder="Placeholder"
+            multiline
+            value={description}
+            className="text-area"
+            onChange={(e) => setDescription(e.target.value)}
             variant="outlined"
-            value={firstName}
-            onChange={(e) => setFirstName(e.currentTarget.value)} 
-          />
-          <TextField
-            id="outlined-last-name"
-            label="Apellido"
-            type="text"
-            className="text-field"
-            autoComplete="apellido"
-            variant="outlined"
-            value={lastName}
-            onChange={(e) => setLastName(e.currentTarget.value)} 
           />
 
+
+          <FormControl variant="outlined" className="age-field">
+            <InputLabel id="demo-simple-select-outlined-label">Age</InputLabel>
+            <Select
+              labelId="demo-simple-select-outlined-label"
+              id="demo-simple-select-outlined"
+              value={gender}
+              className={classes.select}
+              onChange={(e) => setGender(e.target.value)}
+              label="Genero"
+            >
+              <MenuItem value={"Male"}>Hombre</MenuItem>
+              <MenuItem value={"Female"}>Mujer</MenuItem>
+            </Select>
+          </FormControl>
+
         </div>
-        <TextField
-          id="outlined-textarea"
-          label="Descripcion"
-          placeholder="Placeholder"
-          multiline
-          value={description}
-          className="text-area"
-          onChange={(e) => setDescription(e.target.value)}
-          variant="outlined"
-        />
-        </div>
-        <FormControl variant="outlined" className={classes.formControl}>
-          <InputLabel id="demo-simple-select-outlined-label">Age</InputLabel>
-          <Select
-            labelId="demo-simple-select-outlined-label"
-            id="demo-simple-select-outlined"
-            value={gender}
-            className={classes.select}
-            onChange={(e) => setGender(e.target.value)}
-            label="Genero"
-          >
-            <MenuItem value={"Male"}>Hombre</MenuItem>
-            <MenuItem value={"Female"}>Mujer</MenuItem>
-          </Select>
-        </FormControl>
-        
+
         <div className="btn-grp">
-        <Button
-          variant="contained" 
-          className="btn secondary"
-          component={Link} to={'/patients'}        
-        >
-          Cancelar
-        </Button>
-         <Button
-          variant="contained" 
-          className="btn primary"
-          onClick={handleSave}
-        >
-          Crear Paciente
-        </Button>
+          <Button
+            variant="contained"
+            className="btn secondary"
+            component={Link} to={'/patients'}
+          >
+            Cancelar
+          </Button>
+          <Button
+            variant="contained"
+            className="btn primary"
+            onClick={handleSave}
+          >
+            Crear Paciente
+          </Button>
         </div>
+
+      </div>
     </div>
   );
 };
