@@ -104,12 +104,12 @@ const Register = (props) => {
         carnet,
         gender,
       };
-      setOpen(true);
+      console.log(body);
 
       RegisterService.create(body).then(
         (response) => {
           console.log(response);
-          if (response.message == 'Created') {
+          if (response.message === 'Created') {
             setFirstName('');
             setLastName('');
             setEmail('');
@@ -117,12 +117,9 @@ const Register = (props) => {
             setCarnet('');
             setGender('');
             setOpen(true);
-            // setAuthState({ user: email, reported: true });
-            // setTimeout(() => {
-            //   window.location.href = '/';
-
-            //   //props.history.push("/");
-            // }, 1500);
+            setTimeout(() => {
+              window.location.href = '/';
+            }, 1500);
           }
         }
       ).catch(error => console.log(error));

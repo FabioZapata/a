@@ -7,7 +7,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
 import * as LoginService from "../../services/auth.service";
-// import UserContext from "../../context/UserContext";
+import { AuthContext } from '../../contexts/AuthProvider';
 import { Link } from "react-router-dom";
 
 function Alert(props) {
@@ -18,9 +18,8 @@ const Login = () => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  //const setAuthState = useContext(UserContext).setAuthState;
   const [open, setOpen] = useState(false);
-
+  const { setAuthToken, setSessionUserData } = useContext(AuthContext);
 
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {
@@ -50,15 +49,15 @@ const Login = () => {
       "password": password,
     };
 
-    LoginService.login(body).then(
+    LoginService.login(body, setAuthToken, setSessionUserData).then(
       (response) => {
         console.log(response);
         if (response) {
-          localStorage.setItem("token", response.access_token);
-          localStorage.setItem("user", body.email);
+          //localStorage.setItem("token", response.access_token);
+          //localStorage.setItem("user", body.email);
           // setAuthState({user: email, reported: true});
           // console.log(setAuthState.authState);
-          // window.location.href = '/';
+          window.location.href = '/';
         }
         else {
           setOpen(true);

@@ -8,6 +8,9 @@ import Navbar from '../../components/navbar/Navbar';
 
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
+import { useHistory, useParams } from 'react-router-dom'
+
+import * as appointmentService from '../../services/user.service';
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -31,6 +34,7 @@ const CreateAppointment = (props) => {
   const [open, setOpen] = useState(false);
   const [message, setMessage] = useState('');
   const [status, setStatus] = useState('success');
+  const { id } = useParams();
 
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {
@@ -43,6 +47,12 @@ const CreateAppointment = (props) => {
 
   useEffect(() => {
     setName(props?.patient?.name || null);
+    console.log(id);
+    appointmentService.getPatient(id).then(
+      (response) => {
+        setName(response.firstName);
+      }
+    )
   }, []);
 
   const handleDateChange = (date) => {
@@ -59,13 +69,13 @@ const CreateAppointment = (props) => {
   }
 
   const handleSave = () => {
-    // const patientId = props.patient.id;
-    // const body = {
-    //   patientId,
-    //   heartPressure,
-    //   description,
-    //   imgFile,
-    // };
+    const patientId = props.patient.id;
+    const body = {
+      patientId,
+      heartPressure,
+      description,
+      imgFile,
+    };
     setStatus('success');
     setOpen(true);
     setMessage("Creación de la cita exitosa");
